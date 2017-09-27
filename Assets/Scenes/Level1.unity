@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d63c81a18b4f546b093472a9f12256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 150
+  speed: 3
   bomb: {fileID: 1000011269969222, guid: f1db98170d55b62479c71fa6921d0250, type: 2}
 --- !u!54 &639806398
 Rigidbody:
@@ -464,49 +464,3 @@ MonoBehaviour:
   player: {fileID: 639806396}
   distance: 5
   height: 6
---- !u!1001 &922417489
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -2.3477912
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -5.527914
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 7.622678
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4000010735436804, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1000011220767420, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-      propertyPath: m_Name
-      value: Explosion
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a763cb7bb2812bb48bc8a70e3a890715, type: 2}
-  m_IsPrefabParent: 0

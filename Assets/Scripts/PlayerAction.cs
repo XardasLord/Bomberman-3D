@@ -2,7 +2,7 @@
 
 public class PlayerAction : MonoBehaviour
 {
-    public float speed = 100f;
+    public float speed = 2f;
     public GameObject bomb;
 
     void FixedUpdate()
@@ -20,7 +20,7 @@ public class PlayerAction : MonoBehaviour
         var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         var rigidbody = GetComponent<Rigidbody>();
 
-        rigidbody.velocity = move * speed * Time.deltaTime;
+        rigidbody.velocity = move * speed;
     }
 
     void PlantBomb()

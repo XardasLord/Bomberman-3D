@@ -11,10 +11,63 @@ public class BombExplosion : MonoBehaviour {
 
     void Explode()
     {
-        Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        if (explosionEffect != null)
+            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+
+        CheckHits();
 
         GetComponent<MeshRenderer>().enabled = false;
         //transform.FindChild("Collider").gameObject.SetActive(false);
         Destroy(gameObject, .3f);
+    }
+
+    public void CheckHits()
+    {
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * 2;
+        Vector3 back = transform.TransformDirection(Vector3.back) * 2;
+        Vector3 left = transform.TransformDirection(Vector3.left) * 2;
+        Vector3 right = transform.TransformDirection(Vector3.right) * 2;
+
+        RaycastHit[] hits;
+        hits = Physics.RaycastAll(transform.position, Vector3.forward, 2f);
+        foreach (var hit in hits)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Game over!");
+            }
+        }
+
+        hits = Physics.RaycastAll(transform.position, Vector3.left, 2f);
+        foreach (var hit in hits)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Game over!");
+            }
+        }
+
+        hits = Physics.RaycastAll(transform.position, Vector3.right, 2f);
+        foreach (var hit in hits)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Game over!");
+            }
+        }
+
+        hits = Physics.RaycastAll(transform.position, Vector3.back, 2f);
+        foreach (var hit in hits)
+        {
+            if (hit.collider.CompareTag("Player"))
+            {
+                Debug.Log("Game over!");
+            }
+        }
+
+        Debug.DrawRay(transform.position, forward, Color.red, 1f);
+        Debug.DrawRay(transform.position, back, Color.red, 1f);
+        Debug.DrawRay(transform.position, left, Color.red, 1f);
+        Debug.DrawRay(transform.position, right, Color.red, 1f);
     }
 }
