@@ -6,6 +6,7 @@ TagManager:
   tags:
   - StaticWall
   - Bomb
+  - Brick
   layers:
   - Default
   - TransparentFX

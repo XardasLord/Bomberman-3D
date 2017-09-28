@@ -37,6 +37,10 @@ public class BombExplosion : MonoBehaviour {
             {
                 GameOver();
             }
+            else if(hit.collider.CompareTag("Brick"))
+            {
+                DestroyBrick(hit.collider);
+            }
         }
 
         hits = Physics.RaycastAll(transform.position, Vector3.left, 2f);
@@ -45,6 +49,10 @@ public class BombExplosion : MonoBehaviour {
             if (hit.collider.CompareTag("Player"))
             {
                 GameOver();
+            }
+            else if (hit.collider.CompareTag("Brick"))
+            {
+                DestroyBrick(hit.collider);
             }
         }
 
@@ -55,6 +63,10 @@ public class BombExplosion : MonoBehaviour {
             {
                 GameOver();
             }
+            else if (hit.collider.CompareTag("Brick"))
+            {
+                DestroyBrick(hit.collider);
+            }
         }
 
         hits = Physics.RaycastAll(transform.position, Vector3.back, 2f);
@@ -64,8 +76,13 @@ public class BombExplosion : MonoBehaviour {
             {
                 GameOver();
             }
+            else if (hit.collider.CompareTag("Brick"))
+            {
+                DestroyBrick(hit.collider);
+            }
         }
 
+        //TODO: Change DrawRay to explosion effect in the future.
         Debug.DrawRay(transform.position, forward, Color.red, 1f);
         Debug.DrawRay(transform.position, back, Color.red, 1f);
         Debug.DrawRay(transform.position, left, Color.red, 1f);
@@ -75,5 +92,11 @@ public class BombExplosion : MonoBehaviour {
     private void GameOver()
     {
         SceneManager.LoadScene("GameOver");
+    }
+
+    private void DestroyBrick(Collider collider)
+    {
+        //TODO: Chance to get some extra item.
+        Destroy(collider.gameObject);
     }
 }
