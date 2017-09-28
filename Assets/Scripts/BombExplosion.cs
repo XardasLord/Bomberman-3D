@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BombExplosion : MonoBehaviour {
 
@@ -34,7 +35,7 @@ public class BombExplosion : MonoBehaviour {
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Game over!");
+                GameOver();
             }
         }
 
@@ -43,7 +44,7 @@ public class BombExplosion : MonoBehaviour {
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Game over!");
+                GameOver();
             }
         }
 
@@ -52,7 +53,7 @@ public class BombExplosion : MonoBehaviour {
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Game over!");
+                GameOver();
             }
         }
 
@@ -61,7 +62,7 @@ public class BombExplosion : MonoBehaviour {
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log("Game over!");
+                GameOver();
             }
         }
 
@@ -69,5 +70,10 @@ public class BombExplosion : MonoBehaviour {
         Debug.DrawRay(transform.position, back, Color.red, 1f);
         Debug.DrawRay(transform.position, left, Color.red, 1f);
         Debug.DrawRay(transform.position, right, Color.red, 1f);
+    }
+
+    private void GameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
 }
