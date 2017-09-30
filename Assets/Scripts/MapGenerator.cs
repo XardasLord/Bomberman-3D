@@ -2,6 +2,7 @@
 
 public class MapGenerator : MonoBehaviour {
 
+    public GameObject playerPrefab;
     public GameObject staticWallPrefab;
     public GameObject brickPrefab;
     public GameObject enemyPrefab;
@@ -14,9 +15,10 @@ public class MapGenerator : MonoBehaviour {
     Vector3 leftBottomCorner;
     Vector3 rightUpperCorner;
 
-    void Start ()
+    void Start()
     {
         GetGroundCornerCoordinates();
+        SpawnPlayer();
         GenerateWalls();
         GenerateBricks();
         SpawnEnemies();
@@ -29,9 +31,16 @@ public class MapGenerator : MonoBehaviour {
         rightUpperCorner = groundRendrerer.bounds.max + new Vector3(-1.5f, .5f, -1.5f);
     }
 
+    private void SpawnPlayer()
+    {
+        var fixedLeftCorner = leftBottomCorner - new Vector3(1f, 0, 1f);
+
+        Instantiate(playerPrefab, fixedLeftCorner, Quaternion.identity);
+    }
+
     void GenerateWalls()
     {
-        Vector3 currentWallPossition = leftBottomCorner;
+        var currentWallPossition = leftBottomCorner;
 
         for (int x = 0; x <= Mathf.Abs(rightUpperCorner.x * 2); x += possitionSeparator)
         {
