@@ -41,6 +41,10 @@ public class BombExplosion : MonoBehaviour {
             {
                 DestroyBrick(hit.collider);
             }
+            else if (hit.collider.CompareTag("Enemy"))
+            {
+                DestroyEnemy(hit.collider);
+            }
         }
 
         hits = Physics.RaycastAll(transform.position, Vector3.left, 2f);
@@ -53,6 +57,10 @@ public class BombExplosion : MonoBehaviour {
             else if (hit.collider.CompareTag("Brick"))
             {
                 DestroyBrick(hit.collider);
+            }
+            else if (hit.collider.CompareTag("Enemy"))
+            {
+                DestroyEnemy(hit.collider);
             }
         }
 
@@ -67,6 +75,10 @@ public class BombExplosion : MonoBehaviour {
             {
                 DestroyBrick(hit.collider);
             }
+            else if (hit.collider.CompareTag("Enemy"))
+            {
+                DestroyEnemy(hit.collider);
+            }
         }
 
         hits = Physics.RaycastAll(transform.position, Vector3.back, 2f);
@@ -79,6 +91,10 @@ public class BombExplosion : MonoBehaviour {
             else if (hit.collider.CompareTag("Brick"))
             {
                 DestroyBrick(hit.collider);
+            }
+            else if (hit.collider.CompareTag("Enemy"))
+            {
+                DestroyEnemy(hit.collider);
             }
         }
 
@@ -97,6 +113,12 @@ public class BombExplosion : MonoBehaviour {
     private void DestroyBrick(Collider collider)
     {
         //TODO: Chance to get some extra item.
+        Destroy(collider.gameObject);
+    }
+
+    private void DestroyEnemy(Collider collider)
+    {
+        //TODO: Add some points for destroying enemy, etc.
         Destroy(collider.gameObject);
     }
 }

@@ -2,10 +2,12 @@
 
 public class MapGenerator : MonoBehaviour {
 
-    public GameObject staticWall;
-    public GameObject brick;
-    public GameObject ground;
-    public int bricksNumber;
+    public GameObject staticWallPrefab;
+    public GameObject brickPrefab;
+    public GameObject enemyPrefab;
+    public GameObject groundPrefab;
+    public int numberOfBricks;
+    public int numberOfEnemies;
 
     int possitionSeparator = 2;
     Renderer groundRendrerer;
@@ -17,11 +19,12 @@ public class MapGenerator : MonoBehaviour {
         GetGroundCornerCoordinates();
         GenerateWalls();
         GenerateBricks();
+        SpawnEnemies();
     }
 
     void GetGroundCornerCoordinates()
     {
-        groundRendrerer = ground.GetComponent<Renderer>();
+        groundRendrerer = groundPrefab.GetComponent<Renderer>();
         leftBottomCorner = groundRendrerer.bounds.min + new Vector3(1.5f, .5f, 1.5f);
         rightUpperCorner = groundRendrerer.bounds.max + new Vector3(-1.5f, .5f, -1.5f);
     }
@@ -36,7 +39,7 @@ public class MapGenerator : MonoBehaviour {
             {
                 currentWallPossition = leftBottomCorner + new Vector3(x, 0, z);
 
-                Instantiate(staticWall, currentWallPossition, Quaternion.identity);
+                Instantiate(staticWallPrefab, currentWallPossition, Quaternion.identity);
             }
         }
     }
@@ -44,7 +47,7 @@ public class MapGenerator : MonoBehaviour {
     void GenerateBricks()
     {
         //TODO: Set minimum distance from player to generate bricks.
-        for (var i = 0; i < bricksNumber; i++)
+        for (var i = 0; i < numberOfBricks; i++)
         {
             var newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
 
@@ -53,7 +56,22 @@ public class MapGenerator : MonoBehaviour {
                 newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
             }
 
-            Instantiate(brick, newPosition, Quaternion.identity);
+            Instantiate(brickPrefab, newPosition, Quaternion.identity);
+        }
+    }
+
+    void SpawnEnemies()
+    {
+        for(var i = 0; i < numberOfEnemies; i++)
+        {
+            var newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
+
+            while (Physics.CheckSphere(newPosition, 0))
+            {
+                newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
+            }
+
+            Instantiate(enemyPrefab, newPosition, Quaternion.identity);
         }
     }
 }

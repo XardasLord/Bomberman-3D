@@ -118,10 +118,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848d9ab9f5096d4f9e95cede7be5f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  staticWall: {fileID: 1000012162635370, guid: 23308842acbc81446a009ee002d78f54, type: 2}
-  brick: {fileID: 1000012688965760, guid: 68e973c68528f8b44b96995f1a2f31f9, type: 2}
-  ground: {fileID: 1000013030071796, guid: 534f72617fdc6d74887b7cf4b442de74, type: 2}
-  bricksNumber: 5
+  staticWallPrefab: {fileID: 1000012162635370, guid: 23308842acbc81446a009ee002d78f54,
+    type: 2}
+  brickPrefab: {fileID: 1000012688965760, guid: 68e973c68528f8b44b96995f1a2f31f9,
+    type: 2}
+  enemyPrefab: {fileID: 1000013585674138, guid: 97e1f67ce787ee044b326aa388cf453a,
+    type: 2}
+  groundPrefab: {fileID: 1000013030071796, guid: 534f72617fdc6d74887b7cf4b442de74,
+    type: 2}
+  numberOfBricks: 10
+  numberOfEnemies: 2
 --- !u!4 &151116732
 Transform:
   m_ObjectHideFlags: 0
