@@ -93,7 +93,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!114 &114000011537920522
 MonoBehaviour:
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d63c81a18b4f546b093472a9f12256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 5
   bomb: {fileID: 1000011269969222, guid: f1db98170d55b62479c71fa6921d0250, type: 2}
 --- !u!135 &135000011065329296
 SphereCollider:

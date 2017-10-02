@@ -8,6 +8,7 @@ TagManager:
   - Bomb
   - Brick
   - Enemy
+  - Engine
   layers:
   - Default
   - TransparentFX

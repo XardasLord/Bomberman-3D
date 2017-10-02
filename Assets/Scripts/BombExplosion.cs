@@ -4,10 +4,14 @@ using UnityEngine.SceneManagement;
 public class BombExplosion : MonoBehaviour {
 
     public GameObject explosionEffect;
+    public float explosionRange;
+
+    private GameManagerEngine gameManagerEngine;
 
     void Start ()
     {
         Invoke("Explode", 3f);
+        gameManagerEngine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameManagerEngine>();
     }
 
     void Explode()
@@ -24,101 +28,58 @@ public class BombExplosion : MonoBehaviour {
 
     public void CheckHits()
     {
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * 2;
-        Vector3 back = transform.TransformDirection(Vector3.back) * 2;
-        Vector3 left = transform.TransformDirection(Vector3.left) * 2;
-        Vector3 right = transform.TransformDirection(Vector3.right) * 2;
+        RaycastHit hit;
 
-        RaycastHit[] hits;
-        hits = Physics.RaycastAll(transform.position, Vector3.forward, 2f);
-        foreach (var hit in hits)
+        if(Physics.Raycast(transform.position, Vector3.forward, out hit, explosionRange))
         {
+
             if (hit.collider.CompareTag("Player"))
-            {
-                GameOver();
-            }
-            else if(hit.collider.CompareTag("Brick"))
-            {
-                DestroyBrick(hit.collider);
-            }
+                gameManagerEngine.GetHit();
             else if (hit.collider.CompareTag("Enemy"))
-            {
-                DestroyEnemy(hit.collider);
-            }
-        }
-
-        hits = Physics.RaycastAll(transform.position, Vector3.left, 2f);
-        foreach (var hit in hits)
-        {
-            if (hit.collider.CompareTag("Player"))
-            {
-                GameOver();
-            }
+                gameManagerEngine.DestroyEnemy(hit.collider);
             else if (hit.collider.CompareTag("Brick"))
-            {
-                DestroyBrick(hit.collider);
-            }
-            else if (hit.collider.CompareTag("Enemy"))
-            {
-                DestroyEnemy(hit.collider);
-            }
+                gameManagerEngine.DestroyBrick(hit.collider);
         }
 
-        hits = Physics.RaycastAll(transform.position, Vector3.right, 2f);
-        foreach (var hit in hits)
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
-            {
-                GameOver();
-            }
-            else if (hit.collider.CompareTag("Brick"))
-            {
-                DestroyBrick(hit.collider);
-            }
+                gameManagerEngine.GetHit();
             else if (hit.collider.CompareTag("Enemy"))
-            {
-                DestroyEnemy(hit.collider);
-            }
+                gameManagerEngine.DestroyEnemy(hit.collider);
+            else if (hit.collider.CompareTag("Brick"))
+                gameManagerEngine.DestroyBrick(hit.collider);
         }
 
-        hits = Physics.RaycastAll(transform.position, Vector3.back, 2f);
-        foreach (var hit in hits)
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
-            {
-                GameOver();
-            }
-            else if (hit.collider.CompareTag("Brick"))
-            {
-                DestroyBrick(hit.collider);
-            }
+                gameManagerEngine.GetHit();
             else if (hit.collider.CompareTag("Enemy"))
-            {
-                DestroyEnemy(hit.collider);
-            }
+                gameManagerEngine.DestroyEnemy(hit.collider);
+            else if (hit.collider.CompareTag("Brick"))
+                gameManagerEngine.DestroyBrick(hit.collider);
         }
+
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, explosionRange))
+        {
+            if (hit.collider.CompareTag("Player"))
+                gameManagerEngine.GetHit();
+            else if (hit.collider.CompareTag("Enemy"))
+                gameManagerEngine.DestroyEnemy(hit.collider);
+            else if (hit.collider.CompareTag("Brick"))
+                gameManagerEngine.DestroyBrick(hit.collider);
+        }
+
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * explosionRange;
+        Vector3 back = transform.TransformDirection(Vector3.back) * explosionRange;
+        Vector3 left = transform.TransformDirection(Vector3.left) * explosionRange;
+        Vector3 right = transform.TransformDirection(Vector3.right) * explosionRange;
 
         //TODO: Change DrawRay to explosion effect in the future.
         Debug.DrawRay(transform.position, forward, Color.red, 1f);
         Debug.DrawRay(transform.position, back, Color.red, 1f);
         Debug.DrawRay(transform.position, left, Color.red, 1f);
         Debug.DrawRay(transform.position, right, Color.red, 1f);
-    }
-
-    private void GameOver()
-    {
-        SceneManager.LoadScene("GameOver");
-    }
-
-    private void DestroyBrick(Collider collider)
-    {
-        //TODO: Chance to get some extra item.
-        Destroy(collider.gameObject);
-    }
-
-    private void DestroyEnemy(Collider collider)
-    {
-        //TODO: Add some points for destroying enemy, etc.
-        Destroy(collider.gameObject);
     }
 }
