@@ -24,7 +24,7 @@ GameObject:
   - 23: {fileID: 23000011836635778}
   - 54: {fileID: 54000011670180902}
   - 114: {fileID: 114000011537920522}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1000011930119524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5, y: 0, z: -5}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.7, y: 0.5, z: 0.7}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d63c81a18b4f546b093472a9f12256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 3
   bomb: {fileID: 1000011269969222, guid: f1db98170d55b62479c71fa6921d0250, type: 2}
 --- !u!135 &135000011065329296
 SphereCollider:
