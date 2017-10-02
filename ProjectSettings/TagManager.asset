@@ -9,6 +9,7 @@ TagManager:
   - Brick
   - Enemy
   - Engine
+  - Ground
   layers:
   - Default
   - TransparentFX

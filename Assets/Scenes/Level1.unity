@@ -91,58 +91,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &151116730
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 151116732}
-  - 114: {fileID: 151116731}
-  m_Layer: 0
-  m_Name: StartGameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &151116731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 151116730}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9848d9ab9f5096d4f9e95cede7be5f3b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1000011930119524, guid: cebfebf529af42d45ad236c5fbddf325,
-    type: 2}
-  staticWallPrefab: {fileID: 1000012162635370, guid: 23308842acbc81446a009ee002d78f54,
-    type: 2}
-  brickPrefab: {fileID: 1000012688965760, guid: 68e973c68528f8b44b96995f1a2f31f9,
-    type: 2}
-  enemyPrefab: {fileID: 1000013585674138, guid: 97e1f67ce787ee044b326aa388cf453a,
-    type: 2}
-  groundPrefab: {fileID: 1000013030071796, guid: 534f72617fdc6d74887b7cf4b442de74,
-    type: 2}
-  numberOfBricks: 20
-  numberOfEnemies: 5
---- !u!4 &151116732
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 151116730}
-  m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1 &367863714
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,6 +163,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 426563831}
   - 114: {fileID: 426563830}
+  - 114: {fileID: 426563832}
   m_Layer: 0
   m_Name: GameManagerEngine
   m_TagString: Engine
@@ -240,12 +189,35 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 426563829}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5255208, y: -4.7174306, z: 8.013038}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
+--- !u!114 &426563832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 426563829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9848d9ab9f5096d4f9e95cede7be5f3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 1000011930119524, guid: cebfebf529af42d45ad236c5fbddf325,
+    type: 2}
+  staticWallPrefab: {fileID: 1000012162635370, guid: 23308842acbc81446a009ee002d78f54,
+    type: 2}
+  brickPrefab: {fileID: 1000012688965760, guid: 68e973c68528f8b44b96995f1a2f31f9,
+    type: 2}
+  enemyPrefab: {fileID: 1000013585674138, guid: 97e1f67ce787ee044b326aa388cf453a,
+    type: 2}
+  groundPrefab: {fileID: 1000013030071796, guid: 534f72617fdc6d74887b7cf4b442de74,
+    type: 2}
+  numberOfBricks: 20
+  numberOfEnemies: 5
 --- !u!1 &702594100
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,13 +305,13 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702594100}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.39, z: -10}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: 0, y: 12, z: -10}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!114 &702594106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,8 +323,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 745b857905a67354d903cd6a9c37d258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 5
-  height: 8
+  distance: 10
+  height: 15
 --- !u!1001 &1276533352
 Prefab:
   m_ObjectHideFlags: 0
@@ -390,7 +362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010903558282, guid: 534f72617fdc6d74887b7cf4b442de74, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 534f72617fdc6d74887b7cf4b442de74, type: 2}
