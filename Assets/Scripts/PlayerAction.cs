@@ -12,14 +12,17 @@ public class PlayerAction : MonoBehaviour
         gameManagerEngine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameManagerEngine>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
-        Move();
-
         if (Input.GetKeyDown(KeyCode.Space))
         {
             PlantBomb();
         }
+    }
+
+    void FixedUpdate()
+    {
+        Move();
     }
 
     void Move()
