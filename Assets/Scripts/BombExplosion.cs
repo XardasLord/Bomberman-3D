@@ -16,22 +16,62 @@ public class BombExplosion : MonoBehaviour {
     void Explode()
     {
         if (explosionEffect != null)
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
+            CreateExplosion();
 
         CheckHits();
-
-        GetComponent<MeshRenderer>().enabled = false;
-        //transform.FindChild("Collider").gameObject.SetActive(false);
-        Destroy(gameObject, .3f);
+        
+        Destroy(gameObject);
     }
 
-    public void CheckHits()
+    void CreateExplosion()
+    {
+        var forwardExplosion = true;
+        var rightExplosion = true;
+        var backExplosion = true;
+        var leftExplosion = true;
+        GameObject explosion;
+
+        for (var i = 0; i <= explosionRange; i++)
+        {
+            if (forwardExplosion)
+            {
+                explosion = (GameObject)Instantiate(explosionEffect, transform.position + Vector3.forward * i, Quaternion.identity);
+                Destroy(explosion, 3f);
+            }
+            if(rightExplosion)
+            {
+                explosion = (GameObject)Instantiate(explosionEffect, transform.position + Vector3.right * i, Quaternion.identity);
+                Destroy(explosion, 3f);
+            }
+            if (backExplosion)
+            {
+                explosion = (GameObject)Instantiate(explosionEffect, transform.position + Vector3.back * i, Quaternion.identity);
+                Destroy(explosion, 3f);
+            }
+            if(leftExplosion)
+            {
+                explosion = (GameObject)Instantiate(explosionEffect, transform.position + Vector3.left * i, Quaternion.identity);
+                Destroy(explosion, 3f);
+            }
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.forward * (i + 1), out hit, 1f))
+                forwardExplosion = false;
+            if (Physics.Raycast(transform.position, Vector3.right * (i + 1), out hit, 1f))
+                rightExplosion = false;
+            if (Physics.Raycast(transform.position, Vector3.back * (i + 1), out hit, 1f))
+                backExplosion = false;
+            if (Physics.Raycast(transform.position, Vector3.left * (i + 1), out hit, 1f))
+                leftExplosion = false;
+        }
+    }
+
+    void CheckHits()
     {
         RaycastHit hit;
 
         if(Physics.Raycast(transform.position, Vector3.forward, out hit, explosionRange))
         {
-
             if (hit.collider.CompareTag("Player"))
                 gameManagerEngine.GetHit();
             else if (hit.collider.CompareTag("Enemy"))

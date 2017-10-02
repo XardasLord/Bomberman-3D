@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce29f1483c25054f8f905466651fca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionEffect: {fileID: 1000011220767420, guid: a763cb7bb2812bb48bc8a70e3a890715,
+  explosionEffect: {fileID: 1000013715669626, guid: 0bf0c1ffa864dc042833a14af070da56,
     type: 2}
   explosionRange: 2
 --- !u!135 &135000012393467670
