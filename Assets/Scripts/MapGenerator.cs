@@ -17,6 +17,11 @@ public class MapGenerator : MonoBehaviour {
 
     void Start()
     {
+        InitNewMap();
+    }
+
+    public void InitNewMap()
+    {
         GetGroundCornerCoordinates();
         SpawnPlayer();
         GenerateWalls();
