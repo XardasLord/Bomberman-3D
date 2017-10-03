@@ -92,7 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionEffect: {fileID: 1000013715669626, guid: 0bf0c1ffa864dc042833a14af070da56,
     type: 2}
-  explosionRange: 2
+  explosionRange: 1
 --- !u!135 &135000012393467670
 SphereCollider:
   m_ObjectHideFlags: 1

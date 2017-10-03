@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   bomb: {fileID: 1000011269969222, guid: f1db98170d55b62479c71fa6921d0250, type: 2}
+  numberOfBombs: 1
 --- !u!135 &135000011065329296
 SphereCollider:
   m_ObjectHideFlags: 1

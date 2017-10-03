@@ -15,6 +15,8 @@ public class MapGenerator : MonoBehaviour {
     Vector3 leftBottomCorner;
     Vector3 rightUpperCorner;
 
+    private GameObject playerGameObject;
+
     void Start()
     {
         InitNewMap();
@@ -40,7 +42,7 @@ public class MapGenerator : MonoBehaviour {
     {
         var fixedLeftCorner = leftBottomCorner - new Vector3(1f, 0, 1f);
 
-        Instantiate(playerPrefab, fixedLeftCorner, Quaternion.identity);
+        playerGameObject = (GameObject)Instantiate(playerPrefab, fixedLeftCorner, Quaternion.identity);
     }
 
     void GenerateWalls()
@@ -87,5 +89,10 @@ public class MapGenerator : MonoBehaviour {
 
             Instantiate(enemyPrefab, newPosition, Quaternion.identity);
         }
+    }
+
+    public GameObject GetPlayerObject()
+    {
+        return playerGameObject;
     }
 }

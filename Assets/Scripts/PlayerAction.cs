@@ -2,8 +2,9 @@
 
 public class PlayerAction : MonoBehaviour
 {
-    public float speed = 2f;
+    public float speed;
     public GameObject bomb;
+    public int numberOfBombs;
 
     private GameManagerEngine gameManagerEngine;
 
@@ -14,10 +15,8 @@ public class PlayerAction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
+        if (Input.GetKeyDown(KeyCode.Space) && gameManagerEngine.CountBombsOnMap() < numberOfBombs)
             PlantBomb();
-        }
     }
 
     void FixedUpdate()
@@ -25,7 +24,7 @@ public class PlayerAction : MonoBehaviour
         Move();
     }
 
-    void Move()
+    private void Move()
     {
         var move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")) * speed * Time.deltaTime;
         var rigidbody = GetComponent<Rigidbody>();
@@ -33,13 +32,13 @@ public class PlayerAction : MonoBehaviour
         rigidbody.MovePosition(transform.position + move);
     }
 
-    void PlantBomb()
+    private void PlantBomb()
     {
         var position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.transform.position.y, Mathf.RoundToInt(transform.position.z));
         Instantiate(bomb, position, Quaternion.identity);
     }
 
-    void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
         {

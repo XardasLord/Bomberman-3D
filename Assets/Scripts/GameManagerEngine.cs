@@ -6,8 +6,10 @@ public class GameManagerEngine : MonoBehaviour {
 
     public Text pointsText;
     public Text winText;
+    public Text bombText;
 
     private MapGenerator mapGenerator;
+    private PlayerAction playerAction;
     private bool isAlive = true;
     private bool isWon = false;
     private int numberOfEnemies;
@@ -18,17 +20,20 @@ public class GameManagerEngine : MonoBehaviour {
     {
         mapGenerator = gameObject.GetComponent<MapGenerator>();
         numberOfEnemies = mapGenerator.numberOfEnemies;
+
+        playerAction = mapGenerator.GetPlayerObject().GetComponent<PlayerAction>();
+
         points = 0;
         level = 1;
-
-        SetPointsText();
     }
 
     void FixedUpdate ()
     {
         if (!isAlive && !isWon)
             GameOver();
-	}
+        
+        UpdateGUI();
+    }
 
     public void GetHit()
     {
@@ -40,7 +45,6 @@ public class GameManagerEngine : MonoBehaviour {
         Destroy(collider.gameObject);
 
         points++;
-        SetPointsText();
 
         numberOfEnemies--;
         if (numberOfEnemies == 0)
@@ -63,14 +67,30 @@ public class GameManagerEngine : MonoBehaviour {
         SceneManager.LoadScene("GameOver");
     }
 
-    private int CountEnemies()
+    private int CountEnemiesOnMap()
     {
         return GameObject.FindGameObjectsWithTag("Enemy").Length;
+    }
+
+    private void UpdateGUI()
+    {
+        SetPointsText();
+        SetBombsText();
+    }
+
+    public int CountBombsOnMap()
+    {
+        return GameObject.FindGameObjectsWithTag("Bomb").Length;
     }
 
     private void SetPointsText()
     {
         pointsText.text = "Points: " + points.ToString();
+    }
+
+    private void SetBombsText()
+    {
+        bombText.text = "Bombs planted: " + CountBombsOnMap().ToString() + "/" + playerAction.numberOfBombs.ToString();
     }
 
     private void SetWinText()
@@ -88,6 +108,8 @@ public class GameManagerEngine : MonoBehaviour {
         mapGenerator.numberOfEnemies += level;
         numberOfEnemies = mapGenerator.numberOfEnemies;
         mapGenerator.InitNewMap();
+
+        playerAction = mapGenerator.GetPlayerObject().GetComponent<PlayerAction>();
     }
 
     private void DestroyAllObjects()
@@ -101,5 +123,9 @@ public class GameManagerEngine : MonoBehaviour {
         var bricks = GameObject.FindGameObjectsWithTag("Brick");
         foreach (var brick in bricks)
             Destroy(brick);
+
+        var bombs = GameObject.FindGameObjectsWithTag("Bomb");
+        foreach (var bomb in bombs)
+            Destroy(bomb);
     }
 }
