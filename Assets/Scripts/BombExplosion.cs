@@ -78,6 +78,8 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyEnemy(hit.collider);
             else if (hit.collider.CompareTag("Brick"))
                 gameManagerEngine.DestroyBrick(hit.collider);
+            else if (hit.collider.CompareTag("ExtraItem"))
+                gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
         if (Physics.Raycast(transform.position, Vector3.right, out hit, explosionRange))
@@ -88,6 +90,8 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyEnemy(hit.collider);
             else if (hit.collider.CompareTag("Brick"))
                 gameManagerEngine.DestroyBrick(hit.collider);
+            else if (hit.collider.CompareTag("ExtraItem"))
+                gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
         if (Physics.Raycast(transform.position, Vector3.back, out hit, explosionRange))
@@ -98,6 +102,8 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyEnemy(hit.collider);
             else if (hit.collider.CompareTag("Brick"))
                 gameManagerEngine.DestroyBrick(hit.collider);
+            else if (hit.collider.CompareTag("ExtraItem"))
+                gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
         if (Physics.Raycast(transform.position, Vector3.left, out hit, explosionRange))
@@ -108,6 +114,8 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyEnemy(hit.collider);
             else if (hit.collider.CompareTag("Brick"))
                 gameManagerEngine.DestroyBrick(hit.collider);
+            else if (hit.collider.CompareTag("ExtraItem"))
+                gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
         Vector3 forward = transform.TransformDirection(Vector3.forward) * explosionRange;

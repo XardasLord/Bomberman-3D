@@ -342,6 +342,10 @@ MonoBehaviour:
   pointsText: {fileID: 1048860458}
   winText: {fileID: 1086336785}
   bombText: {fileID: 105352865}
+  extraItems:
+  - {fileID: 1000011517984180, guid: a3e976796510c234597b8ebca60f650f, type: 2}
+  - {fileID: 1000013580483308, guid: 770a92bf56e77da4b8aca0b7aa1bbcbe, type: 2}
+  chanceForExtraItem: 50
 --- !u!4 &426563831
 Transform:
   m_ObjectHideFlags: 0
@@ -376,7 +380,7 @@ MonoBehaviour:
     type: 2}
   groundPrefab: {fileID: 1000013030071796, guid: 534f72617fdc6d74887b7cf4b442de74,
     type: 2}
-  numberOfBricks: 20
+  numberOfBricks: 40
   numberOfEnemies: 1
 --- !u!1 &702594100
 GameObject:
@@ -464,10 +468,10 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 702594100}
-  m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 13.72, z: -3.19}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 0, y: 13.72, z: -4.88}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
-  m_LocalEulerAnglesHint: {x: 80, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -691,7 +695,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 100}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 620, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1086336785
 MonoBehaviour:
@@ -714,16 +718,16 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MaxSize: 56
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: 
 --- !u!222 &1086336786

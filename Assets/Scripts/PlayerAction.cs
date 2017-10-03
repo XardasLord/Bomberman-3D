@@ -41,8 +41,15 @@ public class PlayerAction : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy"))
-        {
             gameManagerEngine.GetHit();
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("ExtraItem"))
+        {
+            gameManagerEngine.TakeExtraItem(collider.gameObject);
+            Destroy(collider.gameObject);
         }
     }
 }

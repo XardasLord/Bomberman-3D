@@ -7,6 +7,9 @@ public class GameManagerEngine : MonoBehaviour {
     public Text pointsText;
     public Text winText;
     public Text bombText;
+    public GameObject[] extraItems;
+    [Range(0, 100)]
+    public int chanceForExtraItem;
 
     private MapGenerator mapGenerator;
     private PlayerAction playerAction;
@@ -59,6 +62,19 @@ public class GameManagerEngine : MonoBehaviour {
     public void DestroyBrick(Collider collider)
     {
         //TODO: Chance to get some extra item.
+        if(Random.Range(0, 101) < chanceForExtraItem)
+        {
+            // % propability to spawn an extra item.
+            var randomItem = Random.Range(0, extraItems.Length);
+            Instantiate(extraItems[randomItem], collider.transform.position, Quaternion.identity);
+        }
+
+        Destroy(collider.gameObject);
+    }
+
+    public void DestroyExtraItem(Collider collider)
+    {
+        //TODO: Some penalty maybe? Spawn some extra strong enemy, etc.
         Destroy(collider.gameObject);
     }
 
@@ -127,5 +143,11 @@ public class GameManagerEngine : MonoBehaviour {
         var bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (var bomb in bombs)
             Destroy(bomb);
+    }
+
+    public void TakeExtraItem(GameObject item)
+    {
+        //TODO: Check taken item and add some feature depends on the item.
+        Debug.Log("Took: " + item.name);
     }
 }
