@@ -24,7 +24,7 @@ GameObject:
   - 23: {fileID: 23000012231463658}
   - 114: {fileID: 114000010764593116}
   m_Layer: 0
-  m_Name: Bomb
+  m_Name: Bomb - old
   m_TagString: Bomb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,8 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ce29f1483c25054f8f905466651fca1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  extraItems:
-  - {fileID: 1000011517984180, guid: a3e976796510c234597b8ebca60f650f, type: 2}
   explosionEffect: {fileID: 1000013715669626, guid: 0bf0c1ffa864dc042833a14af070da56,
     type: 2}
   explosionRange: 1

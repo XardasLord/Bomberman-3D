@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  bomb: {fileID: 1000011269969222, guid: f1db98170d55b62479c71fa6921d0250, type: 2}
+  bomb: {fileID: 1000010653647722, guid: ccac04824cc1a6a41b951cf809b39434, type: 2}
   numberOfBombs: 1
 --- !u!135 &135000011065329296
 SphereCollider:
