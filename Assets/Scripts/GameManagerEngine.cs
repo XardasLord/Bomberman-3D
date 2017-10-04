@@ -51,7 +51,14 @@ public class GameManagerEngine : MonoBehaviour {
 
     public void DestroyEnemy(Collider collider)
     {
-        Destroy(collider.gameObject);
+        var animator = collider.gameObject.GetComponent<Animator>();
+        animator.SetBool("Dead", true);
+
+        var enemyAction = collider.gameObject.GetComponent<EnemyAction>();
+        enemyAction.enabled = false;
+
+        //TODO: Get death animation lenght...
+        Destroy(collider.gameObject, 1f);
 
         points++;
 
