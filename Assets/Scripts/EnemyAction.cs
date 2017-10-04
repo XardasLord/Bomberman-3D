@@ -4,15 +4,12 @@ public class EnemyAction : MonoBehaviour {
 
     public LayerMask layers;
     public float speed;
-
-    private Rigidbody rb;
+    
     private Vector3 positionBeforeRand;
     private int lastRandom;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-
         RandomNewDirection();
     }
 	
@@ -24,7 +21,7 @@ public class EnemyAction : MonoBehaviour {
                 RandomNewDirection();
             else
             {
-                rb.MovePosition(transform.position + Vector3.left * speed * Time.deltaTime);
+                transform.Translate(Vector3.left * speed * Time.deltaTime);
                 if (Mathf.Abs(transform.position.x - positionBeforeRand.x) >= 1)
                 {
                     RandomNewDirection();
@@ -36,8 +33,8 @@ public class EnemyAction : MonoBehaviour {
             if (Physics.Raycast(transform.position, Vector3.right, 0.5f, layers))
                 RandomNewDirection();
             else
-            { 
-                rb.MovePosition(transform.position + Vector3.right * speed * Time.deltaTime);
+            {
+                transform.Translate(Vector3.right * speed * Time.deltaTime);
                 if (Mathf.Abs(transform.position.x - positionBeforeRand.x) >= 1)
                 {
                     RandomNewDirection();
@@ -50,7 +47,7 @@ public class EnemyAction : MonoBehaviour {
                 RandomNewDirection();
             else
             {
-                rb.MovePosition(transform.position + Vector3.back * speed * Time.deltaTime);
+                transform.Translate(Vector3.back * speed * Time.deltaTime);
                 if (Mathf.Abs(transform.position.z - positionBeforeRand.z) >= 1)
                 {
                     RandomNewDirection();
@@ -64,7 +61,7 @@ public class EnemyAction : MonoBehaviour {
                 RandomNewDirection();
             else
             {
-                rb.MovePosition(transform.position + Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
                 if (Mathf.Abs(transform.position.z - positionBeforeRand.z) >= 1)
                 {
                     RandomNewDirection();
