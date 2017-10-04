@@ -48,7 +48,7 @@ public class PlayerAction : MonoBehaviour
     {
         if (collider.CompareTag("ExtraItem"))
         {
-            gameManagerEngine.TakeExtraItem(collider.gameObject);
+            StartCoroutine(gameManagerEngine.TakeExtraItem(collider.gameObject));
             Destroy(collider.gameObject);
         }
     }

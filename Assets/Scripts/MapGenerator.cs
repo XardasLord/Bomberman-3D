@@ -5,13 +5,11 @@ public class MapGenerator : MonoBehaviour {
     public GameObject playerPrefab;
     public GameObject staticWallPrefab;
     public GameObject brickPrefab;
-    public GameObject enemyPrefab;
     public GameObject groundPrefab;
     public int numberOfBricks;
-    public int numberOfEnemies;
 
     int possitionSeparator = 2;
-    Renderer groundRendrerer;
+    Renderer groundRenderer;
     Vector3 leftBottomCorner;
     Vector3 rightUpperCorner;
 
@@ -28,14 +26,13 @@ public class MapGenerator : MonoBehaviour {
         SpawnPlayer();
         GenerateWalls();
         GenerateBricks();
-        SpawnEnemies();
     }
 
     void GetGroundCornerCoordinates()
     {
-        groundRendrerer = groundPrefab.GetComponent<Renderer>();
-        leftBottomCorner = groundRendrerer.bounds.min + new Vector3(1.5f, .5f, 1.5f);
-        rightUpperCorner = groundRendrerer.bounds.max + new Vector3(-1.5f, .5f, -1.5f);
+        groundRenderer = groundPrefab.GetComponent<Renderer>();
+        leftBottomCorner = groundRenderer.bounds.min + new Vector3(1.5f, .5f, 1.5f);
+        rightUpperCorner = groundRenderer.bounds.max + new Vector3(-1.5f, .5f, -1.5f);
     }
 
     private void SpawnPlayer()
@@ -73,21 +70,6 @@ public class MapGenerator : MonoBehaviour {
             }
 
             Instantiate(brickPrefab, newPosition, Quaternion.identity);
-        }
-    }
-
-    void SpawnEnemies()
-    {
-        for(var i = 0; i < numberOfEnemies; i++)
-        {
-            var newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
-
-            while (Physics.CheckSphere(newPosition, 0))
-            {
-                newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
-            }
-
-            Instantiate(enemyPrefab, newPosition, Quaternion.identity);
         }
     }
 

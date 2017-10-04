@@ -23,7 +23,7 @@ GameObject:
   - 136: {fileID: 136000010473976776}
   - 23: {fileID: 23000013411191342}
   m_Layer: 0
-  m_Name: ExtraItem2
+  m_Name: Extra - Bomb Limit!
   m_TagString: ExtraItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

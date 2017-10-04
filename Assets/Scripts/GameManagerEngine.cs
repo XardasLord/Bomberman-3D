@@ -1,17 +1,22 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManagerEngine : MonoBehaviour {
 
     public Text pointsText;
     public Text winText;
     public Text bombText;
+    public Text extraItemText;
+    public Text levelText;
     public GameObject[] extraItems;
     [Range(0, 100)]
     public int chanceForExtraItem;
+    public float explosionRange = 1f;
 
     private MapGenerator mapGenerator;
+    private EnemySpawner enemySpawner;
     private PlayerAction playerAction;
     private bool isAlive = true;
     private bool isWon = false;
@@ -22,7 +27,8 @@ public class GameManagerEngine : MonoBehaviour {
     void Start()
     {
         mapGenerator = gameObject.GetComponent<MapGenerator>();
-        numberOfEnemies = mapGenerator.numberOfEnemies;
+        enemySpawner = gameObject.GetComponent<EnemySpawner>();
+        numberOfEnemies = enemySpawner.numberOfEnemies;
 
         playerAction = mapGenerator.GetPlayerObject().GetComponent<PlayerAction>();
 
@@ -61,12 +67,12 @@ public class GameManagerEngine : MonoBehaviour {
 
     public void DestroyBrick(Collider collider)
     {
-        //TODO: Chance to get some extra item.
         if(Random.Range(0, 101) < chanceForExtraItem)
         {
             // % propability to spawn an extra item.
             var randomItem = Random.Range(0, extraItems.Length);
-            Instantiate(extraItems[randomItem], collider.transform.position, Quaternion.identity);
+            var newRandomItem = (GameObject)Instantiate(extraItems[randomItem], collider.transform.position, Quaternion.identity);
+            newRandomItem.name = extraItems[randomItem].name;
         }
 
         Destroy(collider.gameObject);
@@ -92,6 +98,7 @@ public class GameManagerEngine : MonoBehaviour {
     {
         SetPointsText();
         SetBombsText();
+        SetLevelText();
     }
 
     public int CountBombsOnMap()
@@ -109,6 +116,11 @@ public class GameManagerEngine : MonoBehaviour {
         bombText.text = "Bombs planted: " + CountBombsOnMap().ToString() + "/" + playerAction.numberOfBombs.ToString();
     }
 
+    private void SetLevelText()
+    {
+        levelText.text = "Level " + level.ToString();
+    }
+
     private void SetWinText()
     {
         winText.text = "Prepare for the next level...";
@@ -121,11 +133,14 @@ public class GameManagerEngine : MonoBehaviour {
 
         DestroyAllObjects();
 
-        mapGenerator.numberOfEnemies += level;
-        numberOfEnemies = mapGenerator.numberOfEnemies;
+        enemySpawner.numberOfEnemies += level;
+        numberOfEnemies = enemySpawner.numberOfEnemies;
         mapGenerator.InitNewMap();
+        enemySpawner.SpawnEnemies();
 
         playerAction = mapGenerator.GetPlayerObject().GetComponent<PlayerAction>();
+        explosionRange = 1;
+        level++;
     }
 
     private void DestroyAllObjects()
@@ -143,11 +158,31 @@ public class GameManagerEngine : MonoBehaviour {
         var bombs = GameObject.FindGameObjectsWithTag("Bomb");
         foreach (var bomb in bombs)
             Destroy(bomb);
+
+        var items = GameObject.FindGameObjectsWithTag("ExtraItem");
+        foreach (var item in items)
+            Destroy(item);
     }
 
-    public void TakeExtraItem(GameObject item)
+    public IEnumerator TakeExtraItem(GameObject item)
     {
         //TODO: Check taken item and add some feature depends on the item.
-        Debug.Log("Took: " + item.name);
+        extraItemText.text = item.name;
+        extraItemText.enabled = true;
+
+        switch (item.name)
+        {
+            case "Extra - Bomb Range!":
+                explosionRange++;
+                break;
+            case "Extra - Bomb Limit!":
+                playerAction.numberOfBombs++;
+                break;
+            default:
+                break;
+        }
+
+        yield return new WaitForSeconds(2f);
+        extraItemText.enabled = false;
     }
 }

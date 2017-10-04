@@ -3,7 +3,6 @@
 public class BombExplosion : MonoBehaviour {
 
     public GameObject explosionEffect;
-    public float explosionRange;
 
     private GameManagerEngine gameManagerEngine;
 
@@ -31,7 +30,7 @@ public class BombExplosion : MonoBehaviour {
         var leftExplosion = true;
         GameObject explosion;
 
-        for (var i = 0; i <= explosionRange; i++)
+        for (var i = 0; i <= gameManagerEngine.explosionRange; i++)
         {
             if (forwardExplosion)
             {
@@ -70,7 +69,7 @@ public class BombExplosion : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position, Vector3.forward, out hit, explosionRange))
+        if(Physics.Raycast(transform.position, Vector3.forward, out hit, gameManagerEngine.explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
                 gameManagerEngine.GetHit();
@@ -82,7 +81,7 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
-        if (Physics.Raycast(transform.position, Vector3.right, out hit, explosionRange))
+        if (Physics.Raycast(transform.position, Vector3.right, out hit, gameManagerEngine.explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
                 gameManagerEngine.GetHit();
@@ -94,7 +93,7 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
-        if (Physics.Raycast(transform.position, Vector3.back, out hit, explosionRange))
+        if (Physics.Raycast(transform.position, Vector3.back, out hit, gameManagerEngine.explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
                 gameManagerEngine.GetHit();
@@ -106,7 +105,7 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
-        if (Physics.Raycast(transform.position, Vector3.left, out hit, explosionRange))
+        if (Physics.Raycast(transform.position, Vector3.left, out hit, gameManagerEngine.explosionRange))
         {
             if (hit.collider.CompareTag("Player"))
                 gameManagerEngine.GetHit();
@@ -118,10 +117,10 @@ public class BombExplosion : MonoBehaviour {
                 gameManagerEngine.DestroyExtraItem(hit.collider);
         }
 
-        Vector3 forward = transform.TransformDirection(Vector3.forward) * explosionRange;
-        Vector3 back = transform.TransformDirection(Vector3.back) * explosionRange;
-        Vector3 left = transform.TransformDirection(Vector3.left) * explosionRange;
-        Vector3 right = transform.TransformDirection(Vector3.right) * explosionRange;
+        Vector3 forward = transform.TransformDirection(Vector3.forward) * gameManagerEngine.explosionRange;
+        Vector3 back = transform.TransformDirection(Vector3.back) * gameManagerEngine.explosionRange;
+        Vector3 left = transform.TransformDirection(Vector3.left) * gameManagerEngine.explosionRange;
+        Vector3 right = transform.TransformDirection(Vector3.right) * gameManagerEngine.explosionRange;
 
         //TODO: Change DrawRay to explosion effect in the future.
         Debug.DrawRay(transform.position, forward, Color.red, 1f);

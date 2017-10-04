@@ -11,7 +11,7 @@ public class GameOver : MonoBehaviour {
 
         if(timer > 3)
         {
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("MainMenu");
         }
 	}
 }
