@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
                 newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
             }
 
-            Instantiate(enemyBasicPrefab, newPosition, Quaternion.identity);
+            Instantiate(enemyMediumPrefab, newPosition, Quaternion.identity);
         }
     }
 }

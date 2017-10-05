@@ -396,7 +396,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyBasicPrefab: {fileID: 1000013175867634, guid: 9aad9de7cbca6d84b82891c3a1e63e34,
     type: 2}
-  enemyMediumPrefab: {fileID: 1000012308919306, guid: 0e6aaed6497537d4da1af04573331a3e,
+  enemyMediumPrefab: {fileID: 1000011148102054, guid: 47228d4b7bdfaa94fbf70257eaa459a1,
     type: 2}
   numberOfEnemies: 1
 --- !u!1 &702594100

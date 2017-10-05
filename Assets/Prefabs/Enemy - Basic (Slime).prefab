@@ -171,11 +171,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000012535691032}
   - 95: {fileID: 95000010992615658}
-  - 114: {fileID: 114000011197176348}
   - 64: {fileID: 64000014180741970}
   - 54: {fileID: 54000013799567296}
+  - 114: {fileID: 114000011197176348}
   m_Layer: 9
-  m_Name: Slime_Blue
+  m_Name: Enemy - Basic (Slime)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

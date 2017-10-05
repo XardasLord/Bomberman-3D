@@ -58,7 +58,7 @@ public class GameManagerEngine : MonoBehaviour {
         enemyAction.enabled = false;
 
         //TODO: Get death animation lenght...
-        Destroy(collider.gameObject, 1f);
+        Destroy(collider.gameObject, 3f);
 
         points++;
 
@@ -68,7 +68,7 @@ public class GameManagerEngine : MonoBehaviour {
             SetWinText();
             isWon = true;
 
-            Invoke("PrepareNextLevel", 3f);
+            Invoke("PrepareNextLevel", 5f);
         }
     }
 
