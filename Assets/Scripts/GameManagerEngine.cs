@@ -59,10 +59,10 @@ public class GameManagerEngine : MonoBehaviour {
 
         Physics.IgnoreCollision(collider, playerAction.GetComponent<Collider>());
 
-        //TODO: Get death animation lenght...
+        //TODO: Get death animation length...
         Destroy(collider.gameObject, 3f);
 
-        score++;
+        score += collider.GetComponent<EnemyAction>().points;
 
         numberOfEnemies--;
         if (numberOfEnemies == 0)

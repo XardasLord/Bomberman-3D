@@ -4,6 +4,7 @@ public class EnemyAction : MonoBehaviour {
 
     public LayerMask layers;
     public float speed;
+    public int points;
     
     private Vector3 positionBeforeRand;
     private int lastRandom;

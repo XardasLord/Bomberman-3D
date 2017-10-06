@@ -175,7 +175,7 @@ GameObject:
   - 54: {fileID: 54000013799567296}
   - 114: {fileID: 114000011197176348}
   m_Layer: 9
-  m_Name: Enemy - Basic (Slime)
+  m_Name: Enemy - Easy (Slime)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -567,6 +567,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966527
   speed: 1
+  points: 1
 --- !u!137 &137000012344593156
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

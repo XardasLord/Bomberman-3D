@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f30547b6c307f1408e1c25f54af5436, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyBasic: {fileID: 1000013175867634, guid: 9aad9de7cbca6d84b82891c3a1e63e34, type: 2}
+  enemyEasy: {fileID: 1000013175867634, guid: 9aad9de7cbca6d84b82891c3a1e63e34, type: 2}
   enemyMedium: {fileID: 1000011148102054, guid: 47228d4b7bdfaa94fbf70257eaa459a1,
     type: 2}
   enemyHard: {fileID: 1000011046516534, guid: 2a4adfdefdadd7048a18bb7e7cc5b23b, type: 2}

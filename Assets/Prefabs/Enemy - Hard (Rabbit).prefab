@@ -770,6 +770,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294966527
   speed: 2
+  points: 3
 --- !u!137 &137000012128804862
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
