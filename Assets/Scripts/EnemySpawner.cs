@@ -2,8 +2,9 @@
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyBasicPrefab;
-    public GameObject enemyMediumPrefab;
+    public GameObject enemyEasy;
+    public GameObject enemyMedium;
+    public GameObject enemyHard;
 
     public int numberOfEnemies;
 
@@ -36,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
                 newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
             }
 
-            Instantiate(enemyMediumPrefab, newPosition, Quaternion.identity);
+            Instantiate(enemyEasy, newPosition, Quaternion.identity);
         }
     }
 }

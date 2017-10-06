@@ -13,11 +13,11 @@ public class EnemyAction : MonoBehaviour {
         RandomNewDirection();
     }
 	
-	void Update()
+	void FixedUpdate()
     {
         if (lastRandom == 1)
         {
-            if (Physics.Raycast(transform.position, Vector3.left, 0.5f, layers))
+            if (Physics.Raycast(transform.position, Vector3.left, 0.7f, layers))
                 RandomNewDirection();
             else
             {
@@ -30,7 +30,7 @@ public class EnemyAction : MonoBehaviour {
         }
         else if (lastRandom == 2)
         {
-            if (Physics.Raycast(transform.position, Vector3.right, 0.5f, layers))
+            if (Physics.Raycast(transform.position, Vector3.right, 0.7f, layers))
                 RandomNewDirection();
             else
             {
@@ -43,7 +43,7 @@ public class EnemyAction : MonoBehaviour {
         }
         else if (lastRandom == 3)
         {
-            if (Physics.Raycast(transform.position, Vector3.back, 0.5f, layers))
+            if (Physics.Raycast(transform.position, Vector3.back, 0.7f, layers))
                 RandomNewDirection();
             else
             {
@@ -57,7 +57,7 @@ public class EnemyAction : MonoBehaviour {
         }
         else if (lastRandom == 4)
         {
-            if (Physics.Raycast(transform.position, Vector3.forward, 0.5f, layers))
+            if (Physics.Raycast(transform.position, Vector3.forward, 0.7f, layers))
                 RandomNewDirection();
             else
             {

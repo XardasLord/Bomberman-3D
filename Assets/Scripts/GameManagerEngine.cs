@@ -21,7 +21,7 @@ public class GameManagerEngine : MonoBehaviour {
     private bool isAlive = true;
     private bool isWon = false;
     private int numberOfEnemies;
-    private int points;
+    private int score;
     private int level;
 
     void Start()
@@ -32,7 +32,7 @@ public class GameManagerEngine : MonoBehaviour {
 
         playerAction = mapGenerator.GetPlayerObject().GetComponent<PlayerAction>();
 
-        points = 0;
+        score = 0;
         level = 1;
     }
 
@@ -60,7 +60,7 @@ public class GameManagerEngine : MonoBehaviour {
         //TODO: Get death animation lenght...
         Destroy(collider.gameObject, 3f);
 
-        points++;
+        score++;
 
         numberOfEnemies--;
         if (numberOfEnemies == 0)
@@ -93,6 +93,9 @@ public class GameManagerEngine : MonoBehaviour {
 
     private void GameOver()
     {
+        if(PlayerPrefs.GetInt("Highscore") < score)
+            PlayerPrefs.SetInt("Highscore", score);
+
         SceneManager.LoadScene("GameOver");
     }
 
@@ -115,7 +118,7 @@ public class GameManagerEngine : MonoBehaviour {
 
     private void SetPointsText()
     {
-        pointsText.text = "Points: " + points.ToString();
+        pointsText.text = "Score: " + score.ToString();
     }
 
     private void SetBombsText()

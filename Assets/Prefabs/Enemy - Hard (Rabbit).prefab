@@ -144,7 +144,7 @@ GameObject:
   - 54: {fileID: 54000013431579844}
   - 114: {fileID: 114000011934606474}
   m_Layer: 9
-  m_Name: Rabbit_Yellow
+  m_Name: Enemy - Hard (Rabbit)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 1000011046516534}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 40, y: 40, z: 40}
+  m_LocalScale: {x: 30, y: 30, z: 30}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000013233463086}
@@ -769,7 +769,7 @@ MonoBehaviour:
   layers:
     serializedVersion: 2
     m_Bits: 4294966527
-  speed: 1
+  speed: 2
 --- !u!137 &137000012128804862
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
