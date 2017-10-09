@@ -33,11 +33,15 @@ public class EnemySpawner : MonoBehaviour
             var newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
 
             while (Physics.CheckSphere(newPosition, 0))
-            {
                 newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
-            }
 
-            Instantiate(enemyEasy, newPosition, Quaternion.identity);
+            var newEnemy = enemyEasy;
+            if (i / 5 >= 1)
+                newEnemy = enemyMedium;
+            else if (i / 15 >= 2)
+                newEnemy = enemyHard;
+
+            Instantiate(newEnemy, newPosition, Quaternion.identity);
         }
     }
 }
