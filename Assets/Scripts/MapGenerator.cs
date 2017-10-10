@@ -7,6 +7,9 @@ public class MapGenerator : MonoBehaviour {
     public GameObject brickPrefab;
     public GameObject groundPrefab;
     public int numberOfBricks;
+    public Material[] staticWallMaterials;
+    public Material[] brickMaterials;
+    public Material[] groundMaterials;
 
     int possitionSeparator = 2;
     Renderer groundRenderer;
@@ -26,6 +29,8 @@ public class MapGenerator : MonoBehaviour {
         SpawnPlayer();
         GenerateWalls();
         GenerateBricks();
+
+        GameObject.FindGameObjectWithTag("Ground").GetComponent<Renderer>().material = groundMaterials[Random.Range(0, groundMaterials.Length)];
     }
 
     void GetGroundCornerCoordinates()
@@ -44,6 +49,8 @@ public class MapGenerator : MonoBehaviour {
 
     void GenerateWalls()
     {
+        staticWallPrefab.GetComponent<Renderer>().material = staticWallMaterials[Random.Range(0, staticWallMaterials.Length)];
+
         var currentWallPossition = leftBottomCorner;
 
         for (int x = 0; x <= Mathf.Abs(rightUpperCorner.x * 2); x += possitionSeparator)
@@ -59,9 +66,12 @@ public class MapGenerator : MonoBehaviour {
 
     void GenerateBricks()
     {
+        brickPrefab.GetComponent<Renderer>().material = brickMaterials[Random.Range(0, brickMaterials.Length)];
+
         //TODO: Set minimum distance from player to generate bricks.
         for (var i = 0; i < numberOfBricks; i++)
         {
+
             var newPosition = new Vector3(Mathf.Round(Random.Range(leftBottomCorner.x, rightUpperCorner.x)), 0, Mathf.Round(Random.Range(leftBottomCorner.z, rightUpperCorner.z)));
 
             while(Physics.CheckSphere(newPosition, 0))

@@ -18,8 +18,10 @@ public class BombExplosion : MonoBehaviour {
             CreateExplosion();
 
         CheckHits();
-        
-        Destroy(gameObject);
+
+        gameObject.GetComponent<AudioSource>().Play();
+        transform.position += Vector3.down;
+        Destroy(gameObject, 1f);
     }
 
     void CreateExplosion()
