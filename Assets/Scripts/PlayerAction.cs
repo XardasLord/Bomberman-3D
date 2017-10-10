@@ -7,10 +7,12 @@ public class PlayerAction : MonoBehaviour
     public int numberOfBombs;
 
     private GameManagerEngine gameManagerEngine;
+    private Animator anim;
 
     void Start()
     {
         gameManagerEngine = GameObject.FindGameObjectWithTag("Engine").GetComponent<GameManagerEngine>();
+        anim = gameObject.GetComponent<Animator>();
     }
 
     void Update()
@@ -30,11 +32,27 @@ public class PlayerAction : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
 
         rigidbody.MovePosition(transform.position + move);
+
+        if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1 || Mathf.Abs(Input.GetAxis("Vertical")) > 0.1)
+        {
+            anim.SetInteger("Speed", 2);
+
+            if (Input.GetAxis("Horizontal") > 0)
+                rigidbody.MoveRotation(Quaternion.Euler(0, 90, 0));
+            else if (Input.GetAxis("Horizontal") < 0)
+                rigidbody.MoveRotation(Quaternion.Euler(0, 270, 0));
+            else if (Input.GetAxis("Vertical") > 0)
+                rigidbody.MoveRotation(Quaternion.Euler(0, 0, 0));
+            else if (Input.GetAxis("Vertical") < 0)
+                rigidbody.MoveRotation(Quaternion.Euler(0, 180, 0));
+        }
+        else
+            anim.SetInteger("Speed", 0);
     }
 
     private void PlantBomb()
     {
-        var position = new Vector3(Mathf.RoundToInt(transform.position.x), transform.transform.position.y, Mathf.RoundToInt(transform.position.z));
+        var position = new Vector3(Mathf.RoundToInt(transform.position.x), 0, Mathf.RoundToInt(transform.position.z));
         Instantiate(bomb, position, Quaternion.identity);
     }
 

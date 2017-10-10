@@ -93,4 +93,20 @@ public class EnemyAction : MonoBehaviour {
             RandomNewDirection();
         }
     }
+
+    void OnTriggerEnter(Collider collider)
+    {
+        if (collider.CompareTag("Bomb"))
+        {
+            RandomNewDirection();
+        }
+    }
+
+    void OnTriggerStay(Collider collider)
+    {
+        if (collider.CompareTag("Bomb"))
+        {
+            RandomNewDirection();
+        }
+    }
 }

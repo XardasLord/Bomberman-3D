@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 4000010212387850}
   - 135: {fileID: 135000012157697252}
-  - 111: {fileID: 111000012201085798}
   - 114: {fileID: 114000010913760806}
   - 95: {fileID: 95000014072671196}
   - 82: {fileID: 82000012005657298}
@@ -89,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000010653647722}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.1, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
@@ -336,21 +335,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!111 &111000012201085798
-Animation:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000010653647722}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 38972d9a807375f4fbdbf2e076aa183f, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 38972d9a807375f4fbdbf2e076aa183f, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &114000010913760806
 MonoBehaviour:
   m_ObjectHideFlags: 1

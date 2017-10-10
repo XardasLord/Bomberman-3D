@@ -383,8 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9848d9ab9f5096d4f9e95cede7be5f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 1000011930119524, guid: cebfebf529af42d45ad236c5fbddf325,
-    type: 2}
+  playerPrefab: {fileID: 122752, guid: 11561786059d13346b9af9be81fcbed2, type: 2}
   staticWallPrefab: {fileID: 1000012162635370, guid: 23308842acbc81446a009ee002d78f54,
     type: 2}
   brickPrefab: {fileID: 1000012688965760, guid: 68e973c68528f8b44b96995f1a2f31f9,
